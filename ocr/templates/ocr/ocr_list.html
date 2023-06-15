@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}会社一覧{% endblock title %}
+
+{% block content %}
+    {% for item in object_list %}
+        <div class="card">
+            <h5 class="card-header">会社名：{{ item.company }}</h5>
+            <div class="card-body">
+                <li>本社所在地：{{ item.location }}</li>
+                <li>従業員数：{{ item.employee }}名</li>
+                <li>売上高：{{ item.sales_amount }}円</li>
+                <li>HP：{{ item.company_url }}</li>
+                <li>上場：{{ item.listed }}</li>
+                <li>募集職種：{{ item.occupation }}</li>
+                <li>就業時間：{{ item.work_time }}（{{ item.work_hours }}時間）</li>
+                <li>月平均残業時間：{{ item.over_time }}時間</li>
+                <li>基本給：{{ item.basic_salary }}円</li>
+                <li>ボーナス平均：{{ item.bonus_salary }}ヶ月</li>
+                <li>年間休日：{{ item.holiday }}日</li>
+                <li>勤務候補地：{{ item.work_location }}</li>
+                <li>客先常駐：
+                    {% if item.on_site %}有り
+                    {% else %}無し
+                    {% endif %}
+                </li>
+                <a href="{% url "detail-ocr" item.pk %}" class="btn btn-primary">
+                    詳細へ
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content%}

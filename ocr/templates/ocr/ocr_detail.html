@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}会社詳細{% endblock %}
+
+{% block content %}
+    {{ object.company }}
+    {{ object.location }}
+    {{ object.employee }}
+    {{ object.sales_amount }}
+    {{ object.company_url }}
+    {{ object.listed }}
+    {{ object.occupation }}
+    {{ object.work_time }}
+    {{ object.work_hours }}
+    {{ object.over_time }}
+    {{ object.basic_salary }}
+    {{ object.bonus_salary }}
+    {{ object.hoiday }}
+    {{ object.work_location }}
+    {{ object.on_site }}
+{% endblock %}

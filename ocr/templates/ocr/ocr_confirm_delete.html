@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}会社削除{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit">{{ object.company }}を削除する</button>
+    </form>
+{% endblock %}

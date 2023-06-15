@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}TOP{% endblock %}
+{% block h1 %}求人ヨミトール{% endblock %}
+
+<head>
+    <style>
+        #drop-area {
+            border: 2px dashed #ccc;
+            width: 300px;
+            height: 200px;
+            padding: 25px;
+            text-align: center;
+            font-family: sans-serif;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+{% block content %}
+<body>
+    <div id="drop-area">
+      <h3>ファイルをここにドロップ</h3>
+      <p>または、<input type="file" id="file-input"></p>
+    </div>
+    <script>
+      var dropArea = document.getElementById('drop-area');
+  
+      // ファイルがドロップされたときの処理
+      dropArea.addEventListener('drop', handleDrop, false);
+  
+      // ドラッグオーバー時のデフォルトのイベントを抑制する
+      dropArea.addEventListener('dragover', function(e) {
+        e.preventDefault();
+      }, false);
+  
+      // ファイルのドロップ処理
+      function handleDrop(e) {
+        e.preventDefault();
+        var files = e.dataTransfer.files;
+        handleFiles(files);
+      }
+  
+      // ファイルの選択処理
+      document.getElementById('file-input').addEventListener('change', function(e) {
+        var files = e.target.files;
+        handleFiles(files);
+      });
+  
+      // ファイルの処理
+      function handleFiles(files) {
+        for (var i = 0; i < files.length; i++) {
+          var file = files[i];
+          console.log(file);
+          // ここでファイルをサーバーにアップロードするための処理を実行する
+        }
+      }
+    </script>
+  </body>
+{% endblock %}
